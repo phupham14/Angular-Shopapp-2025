@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">Navbar</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <!-- Các mục bên trái -->
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" routerLink="/">Trang chủ</a>
+      <a class="nav-item nav-link" routerLink="/">Sản phẩm</a>
+      <a class="nav-item nav-link" routerLink="/orders">Giỏ hàng</a>
+      <a class="nav-item nav-link" routerLink="/">Liên hệ</a>
+    </div>
+
+    <!-- Icon đăng nhập bên phải -->
+    <div class="ml-auto d-flex align-items-right">
+      <a class="nav-link" routerLink="/login" title="Đăng nhập">
+        <i class="fas fa-user"></i>
+      </a>
+    </div>
+  </div>
+</nav>

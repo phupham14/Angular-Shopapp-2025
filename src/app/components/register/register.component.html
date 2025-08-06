@@ -1,0 +1,90 @@
+<app-header></app-header>
+<div class="register-wrapper">
+
+    <div class="intro-section">
+        <h1>Shopapp</h1>
+        <p>Chào mừng bạn đến với Shopapp</p>
+        <p>Vui lòng đăng ký để tạo tài khoản mới</p>
+    </div>
+
+    <form #registerForm="ngForm" class="register-from">
+    <div class="register-container">
+        <h2>Đăng ký tài khoản</h2>
+
+        <div class="form-group">
+            <label for="fullname">Họ và tên</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Họ và tên" required
+                   [(ngModel)]="fullName">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="phone" id="phone" name="phone" placeholder="Số điện thoại" required
+                   [(ngModel)]="phone"
+                   (input)="onPhoneChange()"
+                   (focus)="registerForm.form.markAsTouched()">
+            <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="phone.length < 10 && registerForm.form.touched">
+                SĐT phải có ít nhất 10 ký tự
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Địa chỉ</label>
+            <input type="text" id="address" name="address" placeholder="Địa chỉ" required
+                   [(ngModel)]="address">
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Ngày tháng năm sinh</label>
+            <input type="date" id="dob" name="dob" required
+                [(ngModel)]="dateOfBirth"
+                #dob="ngModel"
+                (input)="checkAge()">
+            <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="registerForm.form.controls['dob']?.errors?.['age'] && registerForm.form.controls['dob'].touched">
+                Bạn chưa đủ 14 tuổi để đăng ký tài khoản
+            </p>
+        </div>
+
+
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" name="password" placeholder="Mật khẩu" required
+                   [(ngModel)]="password">
+            <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="password.length < 3 && registerForm.form.touched">
+                Mật khẩu phải có ít nhất 3 ký tự
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm-password">Xác nhận mật khẩu</label>
+            <input type="password" id="confirm-password" name="confirmPassword" placeholder="Xác nhận mật khẩu" required
+                [(ngModel)]="confirmPassword"
+                #confirmPass="ngModel"
+                (input)="checkPasswordMatch()">
+            <div class="divider-nospace"></div>
+            <p class="text-danger" *ngIf="registerForm.form.controls['confirmPassword']?.errors?.['passwordMismatch'] && registerForm.form.controls['confirmPassword'].touched">
+            Mật khẩu không khớp
+            </p>
+        </div>
+
+        <div class="form-group terms">
+            <label>
+                <input type="checkbox" id="agree" name="isAccepted" [(ngModel)]="isAccepted" required>
+                Tôi đồng ý với <a href="#">điều khoản sử dụng</a>
+            </label>
+        </div>
+
+        <button type="submit"
+                (click)="onRegister()"
+                class="btn-register">Đăng ký</button>
+
+        <p class="login-link">Đã có tài khoản? <a href="#">Đăng nhập ngay</a></p>
+    </div>
+</form>
+
+</div>
+    
+<app-footer></app-footer>

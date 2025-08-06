@@ -1,0 +1,102 @@
+.register-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+    flex-wrap: wrap;
+    background-color: #ffbe4e;
+}
+
+.intro-section {
+    flex: 1;
+    min-width: 300px;
+    font-family: Arial, sans-serif;
+}
+
+.register-from {
+  width: 100%;
+}
+
+.register-container {
+    width: 45%;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.btn-register {
+    width: 100%;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-register:hover {
+    background-color: #2e7d32;
+}
+
+.login-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+.form-group {
+    margin-right: 0px;
+}
+.form-group.terms label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* khoảng cách giữa checkbox và chữ */
+    font-size: 14px;
+}
+
+.form-group.terms input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+

@@ -1,0 +1,100 @@
+.product-header {
+    margin-top: 20px;
+}
+
+.right-column {
+  padding-left: 20px;
+}
+
+.row {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+    height: 40px;
+}
+
+.introduction{
+    margin-top: 20px;
+}
+
+.form-control {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+}
+
+.product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+}
+
+/* Căn giữa bảng */
+.table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Căn giữa container */
+.row {
+  margin: 0 auto;
+  margin-top: 20px;
+  max-width: 1200px;
+}
+
+/* Viền + bo cong bảng */
+.custom-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Bo góc phần đầu bảng */
+.custom-table thead tr:first-child th:first-child {
+  border-top-left-radius: 12px;
+}
+.custom-table thead tr:first-child th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.apply-btn {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease; 
+  padding: 10px 20px;
+  margin-top: 8px;
+}
+
+.apply-btn:hover {
+  background-color: #574bff;
+}
+
+.order-btn {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-weight: bold;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.order-btn:hover {
+  background: linear-gradient(to right, #ff6a3d, #fd9d58);
+}
+

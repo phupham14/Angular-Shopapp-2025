@@ -1,0 +1,101 @@
+.home {
+    text-align: center;
+    margin-top: auto;
+    padding: 70px;
+    background-color: #ffffff;
+    //background-image: url('https://www.vietnamairlines.com/~/media/SEO-images/places-to-visit-hanoi-at-night/west-lake.jpg?la=en');
+    background-size: cover;
+    background-position: center;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Đề phòng bị tràn */
+}
+
+.search-input {
+  max-width: 200px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.product-category {
+  max-width: 160px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.search-box button {
+  margin-top: 20px;
+  white-space: nowrap;
+}
+
+.product-item {
+    background-color: #ffbc69;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.product-image {
+    width: 250px;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+.rating {
+    display: flex;
+    justify-content: center;
+    color: gold;
+    padding-bottom: 15px;
+}
+.add-to-cart {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.banner-slideshow img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.map-container {
+  padding: 20px 0;
+}
+
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
