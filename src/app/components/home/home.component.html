@@ -13,13 +13,16 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://cdnmedia.baotintuc.vn/Upload/3qVxwVtNEPp6Wp9kkF77g/files/2021/08/30/shopee-300821.jpg" class="d-block w-100" alt="Banner 1">
+                    <img src="https://cdnmedia.baotintuc.vn/Upload/3qVxwVtNEPp6Wp9kkF77g/files/2021/08/30/shopee-300821.jpg"
+                        class="d-block w-100" alt="Banner 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/07/e-commerce-la-gi.jpg" class="d-block w-100" alt="Banner 2">
+                    <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/07/e-commerce-la-gi.jpg"
+                        class="d-block w-100" alt="Banner 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/26198/images/c81cc68-bbd7-c3e-d201-b6fefaaf2544_a2a6b6cd-2147-48c0-a82b-353b302c4833.webp" class="d-block w-100" alt="Banner 3">
+                    <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/26198/images/c81cc68-bbd7-c3e-d201-b6fefaaf2544_a2a6b6cd-2147-48c0-a82b-353b302c4833.webp"
+                        class="d-block w-100" alt="Banner 3">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselBanner" role="button" data-slide="prev">
@@ -45,15 +48,14 @@
 
     <div class="row">
         <div class="col-lg-4 col-md-6" *ngFor="let product of products">
-            <div class="product-item" [routerLink]="['/products', product.id]" (click)="onProductClick(product.id)">
+            <div class="product-item" (click)="onProductClick(product.id)">
                 <img [src]="product.url" alt="Product Image" class="product-image">
                 <h3 class="product-name">{{ product.name }}</h3>
                 <p class="product-description">{{ product.description }}</p>
-                <p class="product-price">Giá: ${{ product.price }}</p>
+                <p class="product-price">Giá: ₫{{ product.price }}</p>
             </div>
         </div>
     </div>
-
 
     <div class="d-flex justify-content-center">
         <nav aria-label="Page navigation">
@@ -84,8 +86,10 @@
         <h3>Địa chỉ cửa hàng</h3>
         <p>123 Đường ABC, Quận XYZ, TP. Hà Nội</p>
         <div class="map-responsive">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27635.442562352735!2d105.81379466471053!3d21.009987015271513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1754441988805!5m2!1sen!2s" 
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27635.442562352735!2d105.81379466471053!3d21.009987015271513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1754441988805!5m2!1sen!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
     </div>

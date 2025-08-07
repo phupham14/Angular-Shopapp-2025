@@ -5,6 +5,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { Product } from '../../models/product';
 import { ProductImage } from 'src/app/models/product.image';
 import { environment } from 'src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,6 +22,7 @@ export class DetailProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
+    private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
     private router: Router,
     // private activatedRoute: ActivatedRoute,
@@ -29,10 +31,11 @@ export class DetailProductComponent implements OnInit {
     }
     ngOnInit() {
       // Lấy productId từ URL      
-      //const idParam = this.activatedRoute.snapshot.paramMap.get('id');
       debugger
+      const idParam = this.activatedRoute.snapshot.paramMap.get('id');
+      console.log('Received id:', idParam);
       //this.cartService.clearCart();
-      const idParam = 2 //fake tạm 1 giá trị
+      //const idParam = 2 //fake tạm 1 giá trị
       if (idParam !== null) {
         this.productId = +idParam;
       }

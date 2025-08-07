@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginDTO } from '../../dtos/user/login.dto';
 import { UserService } from '../../services/user.service';
 import { HttpResponse } from '@angular/common/http'; 
@@ -15,10 +15,10 @@ import { UserResponse } from 'src/app/responses/user/user.response';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   @ViewChild('loginForm') loginForm !: NgForm;
-  phoneNumber: string = '4529374455';
-  password: string = 'Dbc@12345';
+  phoneNumber: string = ''; //4529374455
+  password: string = ''; //Dbc@12345
 
   roles: Role[] = [];
   rememberMe: boolean = true;

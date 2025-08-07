@@ -9,6 +9,7 @@ import { OrderConfirmedComponent } from './components/order-confirmed/order-conf
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { 
@@ -35,6 +36,7 @@ import { AppComponent } from './app/app.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule,
     AppRoutingModule
   ],
   providers: [
