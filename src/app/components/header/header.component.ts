@@ -3,6 +3,7 @@ import { UserResponse } from 'src/app/responses/user/user.response';
 import { UserService } from 'src/app/services/user.service';
 import { TokenService } from 'src/app/services/token.service';
 import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,19 @@ import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 export class HeaderComponent implements OnInit{
   userResponse?:UserResponse | null;
   isPopoverOpen = false;
+  activeNavItem: number = 0;
+
+  constructor(
+    private userService: UserService,   
+    private popoverConfig: NgbPopoverConfig,  
+    private tokenService: TokenService,
+    private router: Router  
+  ) {
+    
+   }
+  ngOnInit() {
+    this.userResponse = this.userService.getUserResponseFromLocalStorage();    
+  }  
 
   togglePopover(event: Event): void {
     event.preventDefault();
@@ -20,23 +34,23 @@ export class HeaderComponent implements OnInit{
 
   handleItemClick(index: number): void {
     //alert(`Clicked on "${index}"`);
-    if(index === 2) {
+    if (index === 0) {
+      this.router.navigate(['/user-profile'])
+    }
+    else if (index === 1) {
+      this.router.navigate(['/orders']);
+    }
+    else if(index === 2) { // Đăng xuất
       this.userService.removeUserFromLocalStorage();
-      this.tokenService.removeToken();
+      this.tokenService.removeToken();  
       this.userResponse = this.userService.getUserResponseFromLocalStorage();    
+      this.router.navigate(['/']);
     }
     this.isPopoverOpen = false; // Close the popover after clicking an item    
   }
 
-  constructor(
-    private userService: UserService,   
-    private popoverConfig: NgbPopoverConfig,  
-    private tokenService: TokenService  
-  ) {
-    
-   }
-  ngOnInit() {
-    this.userResponse = this.userService.getUserResponseFromLocalStorage();    
-  }  
+  setActiveNavItem(index: number) {
+    this.activeNavItem = index
+  }
 }
 

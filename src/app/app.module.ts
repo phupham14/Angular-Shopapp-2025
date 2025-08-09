@@ -18,6 +18,7 @@ import {
 } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [    
@@ -29,7 +30,8 @@ import { AppComponent } from './app/app.component';
     OrderConfirmedComponent, 
     LoginComponent, 
     RegisterComponent,
-    AppComponent
+    AppComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

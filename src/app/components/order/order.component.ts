@@ -115,6 +115,7 @@ export class OrderComponent implements OnInit {
         this.orderData.user_id = user.id;  // ✅ Gán đúng định dạng
       } else {
         alert('Chưa đăng nhập. Vui lòng đăng nhập để đặt hàng.');
+        this.router.navigate(['/login'])
         return;
       }
       this.orderData = {
@@ -132,7 +133,7 @@ export class OrderComponent implements OnInit {
           debugger;
           alert('Đặt hàng thành công');
           this.cartService.clearCart();
-          this.router.navigate(['/']);  
+          this.router.navigate(['/orders', this.orderData]);  
         },
         complete: () => {
           debugger;

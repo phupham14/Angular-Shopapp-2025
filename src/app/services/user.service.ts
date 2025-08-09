@@ -6,9 +6,10 @@ import { LoginDTO } from '../dtos/user/login.dto';
 import { HttpUtilService } from '../services/http.util.service';
 import { UserResponse } from '../responses/user/user.response';
 import { environment } from 'src/environments/environment';
+import { UpdateUserDTO } from '../dtos/user/update.user.dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private apiRegister = `${environment.apiBaseUrl}/users/register`;
@@ -17,7 +18,7 @@ export class UserService {
 
   private apiConfig = {
     headers: this.httpUtilService.getAuthHeaders(),
-  }
+  };
 
   constructor(
     private http: HttpClient,
@@ -32,26 +33,50 @@ export class UserService {
     return this.http.post(this.apiLogin, loginDTO, this.apiConfig);
   }
 
+  updateUserDetail(token: string, updateUserDTO: UpdateUserDTO) {
+    debugger;
+    const userResponse = this.getUserResponseFromLocalStorage();
+
+    if (!userResponse || !userResponse.id) {
+      console.error('User response or user ID not found in localStorage.');
+      throw new Error(
+        'Không tìm thấy thông tin người dùng. Vui lòng đăng nhập lại.'
+      );
+    }
+
+    debugger
+    return this.http.put(
+      `${this.apiUserDetail}/${userResponse?.id}`,
+      updateUserDTO,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+      }
+    );
+  }
+
   getUserDetails(token: string) {
-    return this.http.post(this.apiUserDetail, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      })
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     });
+
+    return this.http.post(this.apiUserDetail, {}, { headers }); 
   }
 
   saveUserResponseToLocalStorage(userResponse?: UserResponse) {
     try {
-      debugger
+      debugger;
       if (userResponse == null || !userResponse) {
         return;
       }
       const userResponseJSON = JSON.stringify(userResponse); //conver to a json string
       localStorage.setItem('user', userResponseJSON); //Save to localStorage
-      console.log("User response saved to local storage")
+      console.log('User response saved to local storage');
     } catch (error) {
-      console.error("Error saving user response to local storage: ", error)
+      console.error('Error saving user response to local storage: ', error);
     }
   }
 
@@ -64,13 +89,16 @@ export class UserService {
       const userResponse = JSON.parse(userResponseJSON!);
       console.log('User Response retrieved from local storage.');
       return userResponse;
-    } catch(error) {
-      console.error('Error retrieving user response from local storage: ', error)
+    } catch (error) {
+      console.error(
+        'Error retrieving user response from local storage: ',
+        error
+      );
       return null;
     }
   }
 
-  removeUserFromLocalStorage():void {
+  removeUserFromLocalStorage(): void {
     try {
       // Remove the user data from local storage using the key
       localStorage.removeItem('user');

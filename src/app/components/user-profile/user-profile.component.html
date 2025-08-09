@@ -1,0 +1,89 @@
+<app-header></app-header>
+<div class="profile-container">
+    <form [formGroup]="UserProfileForm" class="profile-form">
+        <div class="profile-header">
+            <img src="" alt="Avatar" class="avatar" />
+            <div class="info">
+                <h3>{{ userResponse?.fullname }}</h3>
+                <p>User</p>
+            </div>
+            <div class="photo-buttons">
+                <button type="button" class="btn-secondary" (click)="onUploadPhoto()">Upload New Photo</button>
+                <button type="button" class="btn-outline-danger" (click)="onDeletePhoto()">Delete</button>
+            </div>
+        </div>
+
+        <!-- Họ và tên -->
+        <div class="form-group">
+            <label>Họ và tên</label>
+            <input type="text" formControlName="fullname" class="form-control"
+                [class.is-invalid]="UserProfileForm.get('fullname')?.invalid && UserProfileForm.get('fullname')?.touched">
+            <div class="invalid-feedback"
+                *ngIf="UserProfileForm.get('fullname')?.invalid && UserProfileForm.get('fullname')?.touched">
+                Họ và tên là bắt buộc.
+            </div>
+        </div>
+
+        <!-- address -->
+        <div class="form-group">
+            <label>Address</label>
+            <input type="address" formControlName="address" class="form-control"
+                [class.is-invalid]="UserProfileForm.get('address')?.invalid && UserProfileForm.get('address')?.touched">
+            <div class="invalid-feedback"
+                *ngIf="UserProfileForm.get('address')?.invalid && UserProfileForm.get('address')?.touched">
+                {{ UserProfileForm.get('address')?.hasError('address') ? 'address không hợp lệ' : 'address là bắt buộc.' }}
+            </div>
+        </div>
+
+        <!-- Số điện thoại -->
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="text" formControlName="phone_number" class="form-control"
+                [class.is-invalid]="UserProfileForm.get('phone_number')?.invalid && UserProfileForm.get('phone_number')?.touched">
+            <div class="invalid-feedback"
+                *ngIf="UserProfileForm.get('phone_number')?.invalid && UserProfileForm.get('phone_number')?.touched">
+                Số điện thoại là bắt buộc và ít nhất 6 ký tự.
+            </div>
+        </div>
+        
+        <!-- Mật khẩu mới -->
+        <div class="form-group">
+            <label>Mật khẩu mới</label>
+            <input type="password" formControlName="password" class="form-control"
+                [class.is-invalid]="UserProfileForm.get('password')?.invalid && UserProfileForm.get('password')?.touched">
+            <div class="invalid-feedback"
+                *ngIf="UserProfileForm.get('password')?.invalid && UserProfileForm.get('password')?.touched">
+                Mật khẩu là bắt buộc và ít nhất 8 ký tự.
+            </div>
+        </div>
+
+        <!-- Nhập lại mật khẩu -->
+        <div class="form-group">
+            <label>Nhập lại mật khẩu</label>
+            <input type="password" formControlName="retypePassword" class="form-control" [class.is-invalid]="
+             (UserProfileForm.get('retypePassword')?.invalid && UserProfileForm.get('retypePassword')?.touched) ||
+             (UserProfileForm.errors?.['passwordMismatch'] && UserProfileForm.get('retypePassword')?.touched)">
+            <div class="invalid-feedback"
+                *ngIf="UserProfileForm.get('retypePassword')?.invalid && UserProfileForm.get('retypePassword')?.touched">
+                Nhập lại mật khẩu là bắt buộc và ít nhất 8 ký tự.
+            </div>
+            <div class="invalid-feedback"
+                *ngIf="UserProfileForm.errors?.['passwordMismatch'] && UserProfileForm.get('retypePassword')?.touched">
+                Mật khẩu không khớp.
+            </div>
+        </div>
+
+        <!-- Ngày sinh -->
+        <div class="form-group">
+            <label>Ngày sinh</label>
+            <input type="date" formControlName="date_of_birth" class="form-control">
+        </div>
+
+        <!-- Nút hành động -->
+        <div class="form-actions">
+            <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">Hủy</button>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Lưu thay đổi</button>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>
