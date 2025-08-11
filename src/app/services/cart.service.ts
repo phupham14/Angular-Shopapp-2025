@@ -34,7 +34,7 @@ export class CartService {
     }
      // Sau khi thay đổi giỏ hàng, lưu trữ nó vào localStorage
     this.saveCartToLocalStorage();
-    alert(`Đã thêm ${quantity} sản phẩm vào giỏ hàng.`);
+    //alert(`Đã thêm ${quantity} sản phẩm vào giỏ hàng.`);
   }
   
   getCart(): Map<number, number> {

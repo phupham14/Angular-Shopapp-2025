@@ -44,7 +44,7 @@ export class UserService {
       );
     }
 
-    debugger
+    debugger;
     return this.http.put(
       `${this.apiUserDetail}/${userResponse?.id}`,
       updateUserDTO,
@@ -63,7 +63,7 @@ export class UserService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.post(this.apiUserDetail, {}, { headers }); 
+    return this.http.post(this.apiUserDetail, {}, { headers });
   }
 
   saveUserResponseToLocalStorage(userResponse?: UserResponse) {
@@ -96,6 +96,15 @@ export class UserService {
       );
       return null;
     }
+  }
+
+  getUserIdFromLocalStorage(): number {
+    const userStr = localStorage.getItem('userResponse');
+    if (userStr) {
+      const user = JSON.parse(userStr);
+      return user.id || 0; // 0 nếu không có
+    }
+    return 0;
   }
 
   removeUserFromLocalStorage(): void {

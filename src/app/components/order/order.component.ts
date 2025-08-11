@@ -3,6 +3,7 @@ import { Product } from '../../models/product';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { OrderService } from '../../services/order.service';
+import { UserService } from 'src/app/services/user.service';
 import { OrderDTO } from '../../dtos/order/order.dto';
 import { CartItemDTO } from '../../dtos/order/cart.item.dto';
 import { environment } from '../../../environments/environment';
@@ -26,16 +27,16 @@ export class OrderComponent implements OnInit {
   couponCode: string = ''; // Mã giảm giá
   totalAmount: number = 0; // Tổng tiền
   orderData: OrderDTO = {
-    user_id: 10,
+    user_id: this.userService.getUserIdFromLocalStorage(),
     fullname: '',
     email: '',
     phone_number: '',
     address: '',
     note: '',
     total_money: 0,
-    payment_method: 'cod',
+    payment_method: '',
     shipping_address: '',
-    shipping_method: 'standard',
+    shipping_method: '',
     coupon_code: '',
     cart_items: [],
   };
@@ -45,6 +46,7 @@ export class OrderComponent implements OnInit {
     private productService: ProductService,
     private orderService: OrderService,
     private tokenService: TokenService,
+    private userService: UserService,
     private router: Router,
     private fb: FormBuilder
   ) {
@@ -55,8 +57,8 @@ export class OrderComponent implements OnInit {
       phone_number: ['', [Validators.required, Validators.minLength(6)]], // phone_number bắt buộc và ít nhất 6 ký tự
       address: ['', [Validators.required, Validators.minLength(5)]], // address bắt buộc và ít nhất 5 ký tự
       note: [''],
-      shipping_method: [''],
-      payment_method: [''],
+      shipping_method: ['', [Validators.required]],
+      payment_method: ['', [Validators.required]],
     });
   }
 
@@ -112,19 +114,30 @@ export class OrderComponent implements OnInit {
       const userStr = localStorage.getItem('user');
       if (userStr) {
         const user = JSON.parse(userStr);
-        this.orderData.user_id = user.id;  // ✅ Gán đúng định dạng
+        this.orderData.user_id = user.id; // Gán đúng định dạng
       } else {
         alert('Chưa đăng nhập. Vui lòng đăng nhập để đặt hàng.');
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login']);
         return;
       }
-      this.orderData = {
-        ...this.orderData,
-        ...this.orderForm.value,
-      };
-      this.orderData.cart_items = this.cartItems.map((cartItem) => ({
-        product_id: cartItem.product.id,
-        quantity: cartItem.quantity,
+      
+      // Gọi hàm tính tổng tiền trước khi gán
+      this.calculateTotal();
+
+      this.orderData.fullname = this.orderForm.get('fullname')?.value;
+      this.orderData.email = this.orderForm.get('email')?.value;
+      this.orderData.phone_number = this.orderForm.get('phone_number')?.value;
+      this.orderData.address = this.orderForm.get('address')?.value;
+      this.orderData.note = this.orderForm.get('note')?.value;
+      this.orderData.shipping_method =
+        this.orderForm.get('shipping_method')?.value;
+      this.orderData.payment_method =
+        this.orderForm.get('payment_method')?.value;
+
+      this.orderData.cart_items = this.cartItems.map((item) => ({
+        product_id: item.product.id,
+        quantity: item.quantity,
+        price: item.product.price,
       }));
       this.orderData.total_money = this.totalAmount;
       // Dữ liệu hợp lệ, bạn có thể gửi đơn hàng đi
@@ -132,12 +145,12 @@ export class OrderComponent implements OnInit {
         next: (response) => {
           debugger;
           alert('Đặt hàng thành công');
-          this.cartService.clearCart();
-          this.router.navigate(['/orders', this.orderData]);  
+          //this.cartService.clearCart();
+          this.router.navigate(['/orders', response.id]); // truyền dữ liệu
         },
         complete: () => {
           debugger;
-          this.calculateTotal();
+          //this.calculateTotal();
           //alert('Đặt hàng thành công');
         },
         error: (error: any) => {

@@ -142,7 +142,7 @@ export class DetailProductComponent implements OnInit {
     console.log(
       `Thêm sản phẩm ${this.product.name} với số lượng ${this.quantity} vào giỏ hàng.`
     );
-    alert(`Đã thêm "${this.product.name}" vào giỏ hàng.`);
+    alert(`Đã thêm "${this.product.name}" với số lượng ${this.quantity} vào giỏ hàng.`);
   }
 
   increaseQuantity(): void {

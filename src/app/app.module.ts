@@ -19,6 +19,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [    
@@ -31,7 +32,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     LoginComponent, 
     RegisterComponent,
     AppComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

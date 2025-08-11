@@ -4,7 +4,7 @@
         <h1>Cảm ơn quý khách đã mua hàng</h1>
         <p>Thông tin chi tiết đơn hàng</p>
     </div>
-    
+
     <!-- Thông tin người nhận -->
     <div *ngIf="orderResponse" class="row">
         <div class="col-md-6">
@@ -30,7 +30,7 @@
             </div>
             <div class="mb-3">
                 <p class="form-label"> <b>Phương thức thanh toán: </b> {{ orderResponse.payment_method }}</p>
-            </div>                        
+            </div>
         </div>
 
         <!-- Sản phẩm đã đặt hàng -->
@@ -53,15 +53,22 @@
                                 <span class="product-name">{{ item.product.name }}</span>
                             </div>
                         </td>
-                        <td>{{ item.number_of_products }}</td>
-                        <td>{{ item.price | number:'1.2-2' }}</td>
-                        <td>{{ item.total_money | number:'1.2-2' }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price | number:'1.2-2' }} ₫</td>
+                        <td>{{ (item.price * item.quantity) | number:'1.2-2' }} ₫</td>
                     </tr>
                 </tbody>
+
             </table>
             <div class="text-start mt-3">
-                <h4 class="header-text text-end">Tổng giá: {{ orderResponse.total_money | number:'1.2-2' }}</h4>
-            </div>            
+                <h4 class="header-text text-end">
+                    Tổng giá: {{ totalAmount| number:'1.2-2' }} ₫
+                </h4>
+            </div>
+            
+            <div class="btn-wrapper">
+                <button class="btn apply-btn" type="button" (click)="backToHome()">Xác nhận đơn hàng</button>
+            </div>
         </div>
     </div>
 </div>

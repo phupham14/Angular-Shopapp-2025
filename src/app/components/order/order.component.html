@@ -60,18 +60,24 @@
           <label for="shippingMethod">Phương thức vận chuyển:</label>
           <select class="form-control" id="shippingMethod" formControlName="shipping_method">
             <option value="" disabled>Chọn phương thức vận chuyển</option>
-            <option value="express">Nhanh (Express)</option>
-            <option value="standard">Thường (Normal)</option>
+            <option value="Express">Nhanh (Express)</option>
+            <option value="Standard">Thường (Normal)</option>
           </select>
+          <div *ngIf="orderForm.get('shipping_method')!.invalid && orderForm.get('shipping_method')!.touched" class="invalid-feedback">
+            Vui lòng chọn phương thức vận chuyển.
+          </div>
         </div>
 
         <div class="form-group">
           <label for="paymentMethod">Phương thức thanh toán:</label>
           <select class="form-control" id="paymentMethod" formControlName="payment_method">
             <option value="" disabled>Chọn phương thức thanh toán</option>
-            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
-            <option value="bankTransfer">Chuyển khoản ngân hàng</option>
+            <option value="COD">Thanh toán khi nhận hàng (COD)</option>
+            <option value="BankTransfer">Chuyển khoản ngân hàng</option>
           </select>
+          <div *ngIf="orderForm.get('payment_method')!.invalid && orderForm.get('payment_method')!.touched" class="invalid-feedback">
+            Vui lòng chọn phương thức thanh toán.
+          </div>
         </div>
       </form>
 
