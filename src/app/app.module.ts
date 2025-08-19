@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { OrderAdminComponent } from './components/admin/order-admin/order-admin.component';
 
 @NgModule({
   declarations: [    
@@ -33,7 +34,8 @@ import { AdminComponent } from './components/admin/admin.component';
     RegisterComponent,
     AppComponent,
     UserProfileComponent,
-    AdminComponent
+    AdminComponent,
+    OrderAdminComponent
   ],
   imports: [
     BrowserModule,

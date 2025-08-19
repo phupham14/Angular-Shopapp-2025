@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+// Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
+@import "assets/scss/variables";
+
+// Import Bootstrap (từ node_modules)
+@import "bootstrap/scss/bootstrap";
+
+// Import Custom SB Admin 2 Mixins and Components
+@import "assets/scss/mixins";
+@import "assets/scss/global";
+@import "assets/scss/utilities";
+
+// Custom Components
+@import "assets/scss/dropdowns";
+@import "assets/scss/navs";
+@import "assets/scss/buttons";
+@import "assets/scss/cards";
+@import "assets/scss/charts";
+@import "assets/scss/login";
+@import "assets/scss/error";
+@import "assets/scss/footer";

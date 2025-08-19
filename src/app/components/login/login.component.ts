@@ -17,8 +17,8 @@ import { UserResponse } from 'src/app/responses/user/user.response';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('loginForm') loginForm !: NgForm;
-  phoneNumber: string = ''; //4529374455
-  password: string = ''; //Dbc@12345
+  phoneNumber: string = ''; //4529384455
+  password: string = ''; //Dabc@12345
 
   roles: Role[] = [];
   rememberMe: boolean = true;
@@ -75,10 +75,11 @@ export class LoginComponent implements OnInit {
                 date_of_birth: new Date(response.date_of_birth),
               };
               this.userService.saveUserResponseToLocalStorage(this.userResponse);
-              if (this.userResponse?.role.name == 'admin') {
+              //this.router.navigate(['/']);
+              if (this.userResponse?.role.name == 'ADMIN') {
                 this.router.navigate(['/admin']);
               } 
-              else if (this.userResponse?.role.name == 'user') {
+              else if (this.userResponse?.role.name == 'USER') {
                 this.router.navigate(['/']);
               }
             },

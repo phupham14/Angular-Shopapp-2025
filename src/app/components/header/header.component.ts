@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit{
     private router: Router  
   ) {
     
-   }
+  }
   ngOnInit() {
     this.userResponse = this.userService.getUserResponseFromLocalStorage();    
   }  
